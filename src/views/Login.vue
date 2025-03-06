@@ -87,6 +87,7 @@
                         Conectar
                       </button>
                     </form>
+                    <!--
                     <hr />
                     <div class="text-center">
                       Precisa de ajuda?
@@ -98,6 +99,7 @@
                         Fale com o Suporte
                       </a>
                     </div>
+                    -->
                   </div>
                 </div>
               </div>
