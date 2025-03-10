@@ -1,0 +1,1 @@
+import{T as o}from"./Title-CbTmm609.js";import{_ as t,c as a,o as s,w as n,r,a as c}from"./index-DwlHLOfu.js";const p={name:"HomePage",components:{TitlePage:o}};function _(m,i,f,l,d,u){const e=r("title-page");return s(),a(e,{mb:3},{default:n(()=>[c("Dashboard")]),_:1})}const $=t(p,[["render",_]]);export{$ as default};
