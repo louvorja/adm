@@ -216,21 +216,15 @@
             href="javascript:"
             @click="
               goTo(
-                page.label == 'pagination.previous'
+                isPrevious(page)
                   ? data.current_page - 1
-                  : page.label == 'pagination.next'
+                  : isNext(page)
                   ? data.current_page + 1
                   : page.label
               )
             "
           >
-            {{
-              page.label == "pagination.previous"
-                ? "«"
-                : page.label == "pagination.next"
-                ? "»"
-                : page.label
-            }}
+            {{ isPrevious(page) ? "«" : isNext(page) ? "»" : page.label }}
           </a>
         </li>
       </ul>
@@ -319,6 +313,14 @@ export default {
     },
   },
   methods: {
+    isPrevious(page) {
+      return (
+        page.label == "pagination.previous" || page.label.includes("Previous")
+      );
+    },
+    isNext(page) {
+      return page.label == "pagination.next" || page.label.includes("Next");
+    },
     sort(name) {
       if (
         this.options.sort_by == name ||

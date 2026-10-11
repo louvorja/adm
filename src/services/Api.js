@@ -78,8 +78,10 @@ export default {
     }
   },
   base_url() {
-    if (window.location.hostname == "localhost") {
-      return "http://localhost:8000";
+    if (import.meta.env.VITE_API_URL) {
+      return import.meta.env.VITE_API_URL;
+    } else if (window.location.hostname == "localhost") {
+      return "http://localhost:8787";
     } else {
       return "https://api.louvorja.com.br";
     }
@@ -91,15 +93,11 @@ export default {
   headers() {
     return {
       "Content-Type": "application/json",
-      "Api-Token": this.api_token(),
       Authorization: `Bearer ${this.auth_token()}`,
     };
   },
   data_to_url(data) {
     return new URLSearchParams(data).toString();
-  },
-  api_token() {
-    return "02@v2nFB2Dc";
   },
   auth_token() {
     return Storage.get("token", "");
