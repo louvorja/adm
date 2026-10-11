@@ -164,14 +164,6 @@
             <font-awesome-icon icon="user" />
             Dados Pessoais
           </router-link>
-          <a class="dropdown-item" href="#">
-            <font-awesome-icon icon="exclamation" />
-            Settings
-          </a>
-          <a class="dropdown-item" href="#">
-            <font-awesome-icon icon="list" />
-            Activity Log
-          </a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" @click="logout()" href="#">
             <font-awesome-icon icon="sign-out-alt" />
