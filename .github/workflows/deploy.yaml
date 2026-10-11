@@ -34,7 +34,6 @@ jobs:
         env:
           NODE_ENV: production
           VITE_BASE_URL: /
-          VITE_API_URL: https://api.louvorja.workers.dev
       - name: copy CNAME to dist (if exists)
         run: |
           if [ -f CNAME ]; then

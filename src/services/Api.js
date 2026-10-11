@@ -83,7 +83,7 @@ export default {
     } else if (window.location.hostname == "localhost") {
       return "http://localhost:8787";
     } else {
-      return "https://api.louvorja.workers.dev";
+      return "https://api.louvorja.com.br";
     }
   },
   url(route) {
