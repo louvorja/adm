@@ -38,6 +38,7 @@
           name: 'permissions',
           label: 'Permissões',
           options: [
+            { label: 'Arquivos - Enviar', code: 'files.insert' },
             { label: 'users | Usuários', code: 'users' },
             {
               label: 'users.insert | Usuários - Cadastro',

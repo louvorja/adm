@@ -41,41 +41,31 @@ export default {
 
     let url = this.url(route + params);
 
-    let headers = this.headers();
-
-    if (body) {
+    const headers = this.headers();
+    if (body instanceof FormData) {
+      delete headers["Content-Type"];
+    } else if (body) {
       body = JSON.stringify(body || {});
     }
 
-    let error = "";
-    let response = await fetch(url, {
-      method,
-      headers,
-      body,
-    }).catch((err) => {
-      error = err;
-      callback(false, { error: `Erro ao conectar:  ${error}` });
-      return false;
-    });
-
-    if (response.ok) {
-      let data = await response.json();
-      if (data.error != undefined && data.error != "") {
-        callback(false, data);
-        return false;
-      }
-
-      callback(true, data);
-      return true;
-    } else {
-      if (error != "") {
-        callback(false, { error: `Erro ao conectar:  ${error}` });
-      } else {
-        let data = await response.json();
-        callback(false, data);
-      }
+    let response;
+    try {
+      response = await fetch(url, { method, headers, body });
+    } catch (error) {
+      callback(false, { error: `Erro ao conectar: ${error.message}` });
       return false;
     }
+    let data;
+    try {
+      data = response.status === 204 ? {} : await response.json();
+      if (data === null || typeof data !== "object") throw new Error();
+    } catch {
+      callback(false, { error: `Resposta inválida do servidor (HTTP ${response.status}).` });
+      return false;
+    }
+    const success = response.ok && !data.error;
+    callback(success, data);
+    return success;
   },
   base_url() {
     if (import.meta.env.VITE_API_URL) {

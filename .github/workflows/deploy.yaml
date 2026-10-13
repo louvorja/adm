@@ -12,7 +12,7 @@ jobs:
       - name: set up node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 22
       - name: setup git auth
         env:
           email: ${{ secrets.EMAIL }}
@@ -28,7 +28,9 @@ jobs:
           git fetch origin dist:dist
           git show dist:CNAME > CNAME || echo "CNAME not found, skipping"
       - name: install dependencies
-        run: npm install
+        run: npm ci
+      - name: test
+        run: npm test
       - name: build project
         run: npm run build
         env:

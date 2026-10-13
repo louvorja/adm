@@ -165,10 +165,10 @@
             Dados Pessoais
           </router-link>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" @click="logout()" href="#">
+          <button type="button" class="dropdown-item" @click="logout()">
             <font-awesome-icon icon="sign-out-alt" />
-            Logout
-          </a>
+            Sair
+          </button>
         </div>
       </li>
     </ul>

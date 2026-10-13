@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "test": "node --experimental-vm-modules --test test/*.node.mjs",
     "serve": "vite preview",
     "build": "vite build",
     "dev": "vite"

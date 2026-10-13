@@ -31,6 +31,7 @@
           'is-invalid': error_list,
         }"
         :category="category"
+        :language="language"
         :value="modelValue"
         :disabled="disabled || readonly || loading"
         @input="onFile"
@@ -153,6 +154,7 @@ export default {
     disabled: Boolean,
     readonly: Boolean,
     category: String,
+    language: String,
     col: Number,
     colSm: Number,
     colMd: Number,

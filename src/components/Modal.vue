@@ -16,6 +16,7 @@
             type="button"
             class="btn-close"
             data-bs-dismiss="modal"
+            :disabled="busy"
             aria-label="Close"
           ></button>
         </div>
@@ -27,6 +28,7 @@
             v-for="(button, key) in buttons_list"
             :key="key"
             type="button"
+            :disabled="busy"
             :class="'btn btn-' + (button.color ?? 'primary')"
             @click="clickButton(button.id)"
           >
@@ -48,6 +50,7 @@ export default {
     modelValue: Boolean,
     title: String,
     buttons: Object,
+    busy: Boolean,
   },
   data() {
     return {
@@ -89,6 +92,9 @@ export default {
     onModalHide() {
       this.$emit("update:modelValue", false);
     },
+    onModalClosing(event) {
+      if (this.busy) event.preventDefault();
+    },
     clickButton(button) {
       this.$emit("button", button);
     },
@@ -122,6 +128,7 @@ export default {
     if (this.modalElement) {
       this.modalInstance = new Modal(this.modalElement);
       this.modalElement.addEventListener("hidden.bs.modal", this.onModalHide);
+      this.modalElement.addEventListener("hide.bs.modal", this.onModalClosing);
     }
     if (this.show) {
       this.openModal();
@@ -136,6 +143,7 @@ export default {
   },
   beforeUnmount() {
     if (this.modalElement) {
+      this.modalElement.removeEventListener("hide.bs.modal", this.onModalClosing);
       try {
         this.modalElement.removeEventListener(
           "hidden.bs.modal",

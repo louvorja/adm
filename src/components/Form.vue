@@ -14,6 +14,7 @@
       :options_key="field.options_key"
       :options_params="field.options_params"
       :category="field.category ?? ''"
+      :language="data.id_language"
       :disabled="field.disabled ?? false"
       :readonly="this.filter && this.filter[field.name] ? true : false"
       :col="field.col ? field.col[0] ?? 0 : 0"
