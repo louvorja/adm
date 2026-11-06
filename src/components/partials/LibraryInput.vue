@@ -23,7 +23,7 @@
       {{ error_item }}
     </div>
     <div v-else class="d-block text-truncate text-start small w-100">
-      {{ item.name ?? "" }}
+      {{ item.file_name ?? "" }}
     </div>
   </div>
   <div
@@ -53,7 +53,7 @@
     v-else-if="category !== 'music'"
     class="input-group-text flex-fill d-block text-truncate text-start"
   >
-    {{ item.name ?? "" }}
+    {{ item.file_name ?? "" }}
   </div>
 
   <modal
@@ -132,7 +132,7 @@
                 <div
                   class="text-xs font-weight-bold text-primary text-truncate d-block text-uppercase"
                 >
-                  {{ file.name }}
+                  {{ file.file_name }}
                 </div>
                 <div
                   class="text-xs text-muted font-weight-bold text-primary text-truncate d-block mb-1"
@@ -169,12 +169,12 @@
           <figure class="figure">
             <img
               :src="file.url"
-              :alt="file.name"
+              :alt="file.file_name"
               class="figure-img img-thumbnail"
               style="max-height: 130px"
             />
             <figcaption class="figure-caption text-center">
-              {{ file.name }}
+              {{ file.file_name }}
             </figcaption>
           </figure>
         </a>
